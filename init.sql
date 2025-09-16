@@ -1,0 +1,11 @@
+CREATE DATABASE jolupDB;
+
+USE jolupDB;
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY, -- DB상의 식별자
+  username VARCHAR(255) NOT NULL UNIQUE, -- 로그인 ID
+  password VARCHAR(255) NOT NULL,
+  name VARCHAR(255),
+  email VARCHAR(255)
+);
