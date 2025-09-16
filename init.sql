@@ -9,3 +9,14 @@ CREATE TABLE users (
   name VARCHAR(255),
   email VARCHAR(255)
 );
+
+CREATE TABLE travelList (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  userId INT NOT NULL,
+
+  CONSTRAINT fk_travel_user FOREIGN KEY (userId)
+    REFERENCES users(id)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE
+);
