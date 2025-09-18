@@ -68,3 +68,25 @@ exports.login = async (req, res) => {
   const token = createJwtToken(user.id);
   return res.status(200).json({ token, username });
 };
+
+/**
+ * GET /auth/me
+ * 현재 로그인한 사용자 정보 조회
+ *
+ * Request Headers:
+ *   Authorization: Bearer <JWT 토큰>
+ *
+ * Responses:
+ * 200 - { token: "<JWT 토큰>", username: "user1", name: "테스트" }
+ * 404 - { message: "사용자를 찾을 수 없습니다." }
+ */
+exports.me = async (req, res) => {
+  // 현재 로그인한 유저의 ID로 DB에서 유저 정보를 조회
+  const user = await User.findByPk(req.userId);
+  if (!user) return res.status(404).json({
+    message: '사용자를 찾을 수 없습니다.'
+  });
+  return res.status(200).json({
+    token: req.token, username: user.username, name: user.name
+  });
+};
