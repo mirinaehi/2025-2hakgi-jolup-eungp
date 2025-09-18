@@ -3,7 +3,7 @@ const Travel = require('../models/Travel');
 const travelController = {
 
 /**
- * GET /travels
+ * GET /travel
  * 여행지 목록 조회
  */
   async getTravelList(req, res) {
@@ -17,7 +17,7 @@ const travelController = {
   },
 
   /**
- * POST /travels
+ * POST /travel
  * 새로운 여행지 추가
  *
  * Request Headers:
@@ -41,7 +41,7 @@ const travelController = {
   },
 
   /**
- * PUT /travels/:id
+ * PUT /travel/:id
  * 여행지 정보 수정
  *
  * Request Headers:
@@ -75,7 +75,7 @@ const travelController = {
 
 
   /**
- * DELETE /travels/:id
+ * DELETE /travel/:id
  * 여행지 삭제
  *
  * Request Headers:
