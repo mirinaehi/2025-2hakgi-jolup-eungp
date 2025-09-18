@@ -1,11 +1,12 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const bcryptSaltRounds = 12;
 
-
-const jwtSecretKey = '일단은 아무렇게나 입력';
+const jwtSecretKey = process.env.JWTSECRETKEY;
 const jwtExpiresInDays = '2d';
 
 function createJwtToken(id) {

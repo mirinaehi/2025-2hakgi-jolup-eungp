@@ -1,5 +1,8 @@
 const jwt = require('jsonwebtoken');
-const jwtSecretKey = '일단은 아무렇게나 입력';
+const dotenv = require('dotenv');
+dotenv.config();
+
+const jwtSecretKey = process.env.JWTSECRETKEY;
 
 
 function isAuth(req, res, next) {
@@ -18,7 +21,7 @@ function isAuth(req, res, next) {
     // 요청 객체에 사용자 ID와 토큰 저장 (다음 미들웨어/라우트에서 활용 가능)
     req.userId = decoded.id;
     req.token = token;
-    
+
     // 현재 미들웨어를 끝내고, 다음 미들웨어나 라우트 핸들러로 요청을 넘김
     next();
   } catch {
